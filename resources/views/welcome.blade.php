@@ -14,8 +14,11 @@
 
         <title>Newslatter Subscription</title>
 
+
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
 
         <!-- Styles -->
 
@@ -121,6 +124,7 @@
                             <div class="form-group">
                                 <div class="col-sm-2"></div>
                                 <div class="col-sm-8">
+                                    {{ csrf_field() }}
                                   <input style="color: black;" type="email" id="subscribed_email" class="form-control" id="email" placeholder="Enter email">
                                 </div>
                                 <div class="col-sm-2"></div>
@@ -151,5 +155,8 @@
 
             </div>
         </div>
+
+
+
     </body>
 </html>

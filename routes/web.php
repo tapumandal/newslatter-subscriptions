@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/subscriber/list', 'SubscriberController@index')->name('home');
 
 // Route::resource('newslatter/subscribe/list', 'NewsLatterSubscription');
 // Route::resource('newslatter/create', 'NewsLatterSubscription');
 
-Route::resource('/newslatter/subscribtion', 'NewsLatterSubscription');
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('/newslatters', 'NewsLatterSubscription');
+});
+
+Route::post('/newslatters', 'NewsLatterSubscription@store');

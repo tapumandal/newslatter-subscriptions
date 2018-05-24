@@ -13,8 +13,14 @@ class NewsLatterSubscription extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return 'index';
-		//
+
+		$emailRepo = new EmailRepository(new Subscriber);
+
+		return view('subscriber_list',
+			[
+				'subscribers' => $emailRepo->index(),
+			]
+		);
 	}
 
 	/**

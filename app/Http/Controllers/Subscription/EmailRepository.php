@@ -21,7 +21,7 @@ class EmailRepository extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		return $this->subscriber::paginate(10);
 	}
 
 	/**

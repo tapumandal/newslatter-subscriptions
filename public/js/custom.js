@@ -23,7 +23,7 @@ $(document).ready(function(){
 		if(validateEmail(email) == true){
 			$.ajax({
 		 		type: "POST",
-		 		url: "/newslatter/subscribtion",
+		 		url: "/newslatters",
 		 		data: "email="+email+"&_token="+_token,
 		 		cache: false,
 		 		async: false,

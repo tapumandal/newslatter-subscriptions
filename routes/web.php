@@ -17,13 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/subscriber/list', 'SubscriberController@index')->name('home');
-
-// Route::resource('newslatter/subscribe/list', 'NewsLatterSubscription');
-// Route::resource('newslatter/create', 'NewsLatterSubscription');
-
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('/newslatters', 'NewsLatterSubscription');
+	Route::get('/newslattersubscribers/export', 'NewsLatterSubscription@export')->name('export_subscriber');
+	Route::resource('/newslattersubscribers', 'NewsLatterSubscription');
+
 });
 
-Route::post('/newslatters', 'NewsLatterSubscription@store');
+Route::post('/newslattersubscribers', 'NewsLatterSubscription@store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Subscription\EmailRepository;
 use App\Subscriber;
+use Excel;
 use Illuminate\Http\Request;
 
 class NewsLatterSubscription extends Controller {
@@ -21,6 +22,22 @@ class NewsLatterSubscription extends Controller {
 				'subscribers' => $emailRepo->index(),
 			]
 		);
+
+	}
+
+	public function export() {
+
+		$mytime = \Carbon\Carbon::now();
+		$tym = $mytime->toDateString();
+
+		$data = Subscriber::select('email', 'subscrib_at')->where('status', '=', 'enable')->get()->toArray();
+
+		return Excel::create('NewsLatterSubscribers-' . $tym, function ($excel) use ($data) {
+			$excel->sheet('mySheet', function ($sheet) use ($data) {
+				$sheet->fromArray($data);
+			});
+		})->download('xls');
+
 	}
 
 	/**

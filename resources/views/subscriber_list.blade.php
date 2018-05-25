@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Subscribers List ({{ $subscribers->total() }})</div>
+                <div class="panel-heading"> <b style="font-size: 20px;"> Total Subscriber ({{ $subscribers->total() }}) </b>
+                    <a style="float: right; padding-top: 8px;" href="{{ Route('export_subscriber') }}">Export</a>
+                </div>
 
                 <div class="panel-body">
                     @if (session('status'))

@@ -16,7 +16,7 @@ class CreateSubscribersTable extends Migration {
 			$table->string('email');
 			$table->string('status');
 			$table->date('subscrib_at');
-			$table->date('disable_at');
+			$table->date('disable_at')->nullable();
 			$table->timestamps();
 		});
 	}

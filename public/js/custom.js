@@ -23,7 +23,7 @@ $(document).ready(function(){
 		if(validateEmail(email) == true){
 			$.ajax({
 		 		type: "POST",
-		 		url: "/newslatters",
+		 		url: "/newslattersubscribers",
 		 		data: "email="+email+"&_token="+_token,
 		 		cache: false,
 		 		async: false,
@@ -47,7 +47,6 @@ $(document).ready(function(){
 
 
 function validateEmail(email) {
-	return true;
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }

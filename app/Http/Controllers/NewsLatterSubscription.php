@@ -6,6 +6,7 @@ use App\Http\Controllers\Subscription\EmailRepository;
 use App\Subscriber;
 use Excel;
 use Illuminate\Http\Request;
+use Validator;
 
 class NewsLatterSubscription extends Controller {
 	/**
@@ -58,6 +59,14 @@ class NewsLatterSubscription extends Controller {
 	 */
 	public function store(Request $request) {
 
+		$validator = Validator::make($request->all(), [
+			'email' => 'required|email',
+		]);
+
+		if ($validator->fails()) {
+			return 'Email Address is not correct';
+		}
+
 		$store = new EmailRepository(new Subscriber);
 
 		return $store->store($request->all());
@@ -107,4 +116,5 @@ class NewsLatterSubscription extends Controller {
 		return 'destroy';
 		//
 	}
+
 }
